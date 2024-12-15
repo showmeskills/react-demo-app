@@ -1,2 +1,5 @@
-node_modules
-package-lock.json
+/node_modules
+/package-lock.json
+/src/coverage/lcov-report/**
+/src/coverage/clover.xml
+/src/coverage/coverage-final.json

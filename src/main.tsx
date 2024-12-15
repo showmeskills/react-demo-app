@@ -3,8 +3,12 @@ import App from './App.tsx'
 import { Provider } from 'react-redux'
 import { store } from './store/store.ts'
 import "../public/assets/reset.css";
-createRoot(document.getElementById('root')!).render(
+
+const rootElement = document.getElementById('root')!;
+const root = createRoot(rootElement); 
+root.render( 
   <Provider store={store}>
-     <App />
+    <App />
   </Provider>,
-)
+);
+

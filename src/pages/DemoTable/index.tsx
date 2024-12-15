@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { requestListItem } from "../../apis/ListItem";
+import { requestTableItem } from "../../apis/TableItem";
 import { useDispatch, useSelector } from "react-redux";
-import { listItemSelector } from "../../store/table/table.selector";
+import { tableItemSelector } from "../../store/table/table.selector";
 import { setTableItem } from "../../store/table/table.reducer";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import Paper from "@mui/material/Paper";
@@ -13,14 +13,14 @@ import SelectedItem from "./SelectedItem";
 import { SelectedItemStatus } from "../../interface/DemoTable/SelectedItem.interface";
 
 const DemoTable = () => {
-  const selectListIitem = useSelector(listItemSelector);
+  const selectListIitem = useSelector(tableItemSelector);
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const [selectedItem, setSelectedItem] = useState<SelectedItemStatus>(null);
   const initData = async () => {
     try {
       setLoading(true);
-      const result = await requestListItem();
+      const result = await requestTableItem();
       dispatch(setTableItem(result?.data || []));
     } catch (err) {
       console.error(err);
@@ -44,7 +44,7 @@ const DemoTable = () => {
     },
     {
       field: "name",
-      headerName: "name",
+      headerName: "Name",
       align: "center",
       headerAlign: "center",
       display: "flex",
